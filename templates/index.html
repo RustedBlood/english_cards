@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .demo-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .level-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+        }
+
+        .level-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+        }
+
+        .level-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .level-name {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .level-description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .level-difficulty {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .levels-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">English Cards</div>
+        <div class="demo-badge">DEMO</div>
+    </header>
+
+    <main class="levels-grid">
+        <div class="level-card" data-grade="A1">
+            <div class="level-title">A1</div>
+            <div class="level-name">Beginner</div>
+            <div class="level-description">
+                Базовые фразы и выражения для повседневного общения.
+                Умение представиться и задавать простые вопросы.
+            </div>
+            <div class="level-difficulty">Словарный запас: ~1000 слов</div>
+        </div>
+
+        <div class="level-card" data-grade="A2">
+            <div class="level-title">A2</div>
+            <div class="level-name">Elementary</div>
+            <div class="level-description">
+                Общение на основные темы, описание простых ситуаций.
+                Понимание отдельных предложений и частых выражений.
+            </div>
+            <div class="level-difficulty">Словарный запас: ~2000 слов</div>
+        </div>
+
+        <div class="level-card" data-grade="B1">
+            <div class="level-title">B1</div>
+            <div class="level-name">Intermediate</div>
+            <div class="level-description">
+                Общение в большинстве ситуаций во время путешествий.
+                Составление простых связных текстов на знакомые темы.
+            </div>
+            <div class="level-difficulty">Словарный запас: ~3000 слов</div>
+        </div>
+
+        <div class="level-card" data-grade="B2">
+            <div class="level-title">B2</div>
+            <div class="level-name">Upper-Intermediate</div>
+            <div class="level-description">
+                Общение с носителями без особых затруднений.
+                Подробные тексты на различные темы, обсуждение сложных вопросов.
+            </div>
+            <div class="level-difficulty">Словарный запас: ~4000 слов</div>
+        </div>
+
+        <div class="level-card" data-grade="C1">
+            <div class="level-title">C1</div>
+            <div class="level-name">Advanced</div>
+            <div class="level-description">
+                Свободное спонтанное общение без подготовки.
+                Использование языка в научной и профессиональной деятельности.
+            </div>
+            <div class="level-difficulty">Словарный запас: ~5000 слов</div>
+        </div>
+
+        <div class="level-card" data-grade="C2">
+            <div class="level-title">C2</div>
+            <div class="level-name">Proficiency</div>
+            <div class="level-description">
+                Владение языком на уровне носителя.
+                Понимание практически всего услышанного и прочитанного.
+            </div>
+            <div class="level-difficulty">Словарный запас: 6000+ слов</div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const levelCards = document.querySelectorAll('.level-card');
+
+            levelCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const grade = this.getAttribute('data-grade');
+                    window.location.href = `/${grade}`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+[package]
+name = "english_cards"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+actix-files = "0.6.8"
+actix-web = "4.11.0"
+dashmap = "6.1.0"
+scv = "0.1.2"
+serde = "1.0.228"
+tera = "1.20.1"
+tokio = "1.48.0"
