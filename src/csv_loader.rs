@@ -1,20 +1,25 @@
-use crate::models::Word;
 use dashmap::DashMap;
-use scv;
-use std::sync::Arc;
 
-pub struct WordLoader {
-    cache: Arc<DashMap<String, Vec<Word>>>,
-    data_dir: String,
-}
+use crate::models::{Word, WordsDash};
 
-impl WordLoader {
-    pub fn new(&self, grade: &str) -> Self {
-        let filename = format!("{}.csv", grade);
+impl WordsDash {
+    pub fn new() -> Self {
+        let new_dash: DashMap<String, Vec<Word>> = DashMap::new();
+
+        let mut readed_csv_db = csv::Reader::from_path("db/words.csv").unwrap();
+
+        for recorded in readed_csv_db.deserialize() {
+            let record: Word = recorded.unwrap();
+
+            let grade = record.grade.clone();
+
+            new_dash
+                .entry(grade)
+                .or_insert_with(|| Vec::new())
+                .push(record);
+        }
         Self {
-            cache: Arc::new(DashMap::new()),
-            data_dir: filename,
+            words_dash: new_dash,
         }
     }
-    pub fn get_words(&self, grade: &str) {}
 }

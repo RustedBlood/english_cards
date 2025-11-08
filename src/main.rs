@@ -8,19 +8,23 @@ mod models;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    //обработка .html файлов по templates/ и их загрузка
     let tera = Tera::new("templates/*").unwrap();
     let tera_data = web::Data::new(tera);
 
+    //Запуск и чтение csv ридера
+    let loaded_words = models::WordsDash::new();
+    let loaded_words_data = web::Data::new(loaded_words);
+    //Запуск http сервера
     HttpServer::new(move || {
         App::new()
             .app_data(tera_data.clone()) // клонирование Arc
-            .route("/", web::get().to(handlers::index))
-            .route("/{group_id}", web::get().to(handlers::grade))
-            .service(Files::new("/static", "./static"))
+            .app_data(loaded_words_data.clone()) //arc указатель
+            .route("/", web::get().to(handlers::index)) //первичная страница
+            .route("/{group_id}", web::get().to(handlers::grade)) // Загрузка карточек
+            .service(Files::new("/static", "./static")) // Сервис статик файлов
     })
     .bind("127.0.0.1:8080")?
     .run()
     .await
 }
-
-//Загрузка файлов .html

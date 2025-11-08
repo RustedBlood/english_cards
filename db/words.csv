@@ -1,0 +1,120 @@
+A1,hello,[həˈləʊ],привет
+A1,goodbye,[ˌɡʊdˈbaɪ],до свидания
+A1,please,[pliːz],пожалуйста
+A1,thank you,[ˈθæŋk juː],спасибо
+A1,yes,[jes],да
+A1,no,[nəʊ],нет
+A1,man,[mæn],мужчина
+A1,woman,[ˈwʊmən],женщина
+A1,boy,[bɔɪ],мальчик
+A1,girl,[ɡɜːl],девочка
+A1,house,[haʊs],дом
+A1,book,[bʊk],книга
+A1,water,[ˈwɔːtə],вода
+A1,food,[fuːd],еда
+A1,cat,[kæt],кот
+A1,dog,[dɒɡ],собака
+A1,apple,[ˈæpl],яблоко
+A1,red,[red],красный
+A1,one,[wʌn],один
+A1,mother,[ˈmʌðə],мать
+A2,weekend,[ˈwiːkend],выходные
+A2,weather,[ˈweðə],погода
+A2,holiday,[ˈhɒlədeɪ],отпуск
+A2,job,[dʒɒb],работа
+A2,friend,[frend],друг
+A2,shopping,[ˈʃɒpɪŋ],покупки
+A2,bus,[bʌs],автобус
+A2,train,[treɪn],поезд
+A2,hospital,[ˈhɒspɪtl],больница
+A2,teacher,[ˈtiːtʃə],учитель
+A2,problem,[ˈprɒbləm],проблема
+A2,always,[ˈɔːlweɪz],всегда
+A2,sometimes,[ˈsʌmtaɪmz],иногда
+A2,because,[bɪˈkɒz],потому что
+A2,expensive,[ɪkˈspensɪv],дорогой
+A2,cheap,[tʃiːp],дешёвый
+A2,beautiful,[ˈbjuːtɪfl],красивый
+A2,angry,[ˈæŋɡri],злой
+A2,afraid,[əˈfreɪd],испуганный
+A2,visit,[ˈvɪzɪt],посещать
+B1,experience,[ɪkˈspɪəriəns],опыт
+B1,decision,[dɪˈsɪʒn],решение
+B1,improve,[ɪmˈpruːv],улучшать
+B1,describe,[dɪˈskraɪb],описывать
+B1,realize,[ˈriːəlaɪz],осознавать
+B1,opportunity,[ˌɒpəˈtjuːnəti],возможность
+B1,especially,[ɪˈspeʃəli],особенно
+B1,although,[ɔːlˈðəʊ],хотя
+B1,unless,[ənˈles],если не
+B1,complain,[kəmˈpleɪn],жаловаться
+B1,apologize,[əˈpɒlədʒaɪz],извиняться
+B1,behavior,[bɪˈheɪvjə],поведение
+B1,relax,[rɪˈlæks],расслабляться
+B1,confident,[ˈkɒnfɪdənt],уверенный
+B1,embarrassed,[ɪmˈbærəst],смущённый
+B1,disappointed,[ˌdɪsəˈpɔɪntɪd],разочарованный
+B1,achieve,[əˈtʃiːv],достигать
+B1,advice,[ədˈvaɪs],совет
+B1,habit,[ˈhæbɪt],привычка
+B1,pressure,[ˈpreʃə],давление
+B2,consequence,[ˈkɒnsɪkwəns],последствие
+B2,assume,[əˈsjuːm],предполагать
+B2,contribute,[kənˈtrɪbjuːt],вносить вклад
+B2,demonstrate,[ˈdemənstreɪt],демонстрировать
+B2,involve,[ɪnˈvɒlv],вовлекать
+B2,justify,[ˈdʒʌstɪfaɪ],обосновывать
+B2,negotiate,[nɪˈɡəʊʃieɪt],вести переговоры
+B2,perceive,[pəˈsiːv],воспринимать
+B2,significant,[sɪɡˈnɪfɪkənt],значительный
+B2,variety,[vəˈraɪəti],разнообразие
+B2,awareness,[əˈweənəs],осознание
+B2,controversial,[ˌkɒntrəˈvɜːʃl],спорный
+B2,efficient,[ɪˈfɪʃnt],эффективный
+B2,influence,[ˈɪnfluəns],влияние
+B2,objective,[əbˈdʒektɪv],цель; объективный
+B2,potential,[pəˈtenʃl],потенциал
+B2,reliable,[rɪˈlaɪəbl],надёжный
+B2,restrict,[rɪˈstrɪkt],ограничивать
+B2,unique,[juːˈniːk],уникальный
+B2,ultimately,[ˈʌltɪmətli],в конечном счёте
+C1,ambiguity,[ˌæmbɪˈɡjuːəti],неоднозначность
+C1,coherent,[kəʊˈhɪərənt],связный
+C1,dilemma,[daɪˈlemə],дилемма
+C1,elaborate,[ɪˈlæbəreɪt],развёрнуто излагать
+C1,feasible,[ˈfiːzəbl],осуществимый
+C1,fluctuate,[ˈflʌktʃueɪt],колебаться
+C1,inevitable,[ɪnˈevɪtəbl],неизбежный
+C1,legitimate,[lɪˈdʒɪtɪmət],законный, обоснованный
+C1,nuance,[njuːˈɑːns],нюанс
+C1,paradigm,[ˈpærədaɪm],парадигма
+C1,persistent,[pəˈsɪstənt],настойчивый
+C1,profound,[prəˈfaʊnd],глубокий
+C1,rational,[ˈræʃnl],рациональный
+C1,scrutiny,[ˈskruːtəni],тщательная проверка
+C1,spontaneous,[spɒnˈteɪniəs],спонтанный
+C1,substantial,[səbˈstænʃl],существенный
+C1,tentative,[ˈtentətɪv],предварительный
+C1,underlying,[ˌʌndəˈlaɪɪŋ],лежащий в основе
+C1,versatile,[ˈvɜːsətaɪl],универсальный
+C1,warrant,[ˈwɒrənt],гарантировать; оправдывать
+C2,aberration,[ˌæbəˈreɪʃn],отклонение от нормы
+C2,cacophony,[kəˈkɒfəni],дисгармония звуков, какофония
+C2,deleterious,[ˌdelɪˈtɪəriəs],вредный
+C2,ebullient,[ɪˈbʌliənt],восторженный
+C2,fastidious,[fæˈstɪdiəs],привередливый
+C2,garrulous,[ˈɡærələs],болтливый
+C2,harangue,[həˈræŋ],громкая речь/нотация
+C2,incisive,[ɪnˈsaɪsɪv],проницательный
+C2,juxtapose,[ˌdʒʌkstəˈpəʊz],располагать рядом для контраста
+C2,lugubrious,[luːˈɡjuːbriəs],мрачный, унылый
+C2,mellifluous,[meˈlɪfluəs],мелодичный (о звуке)
+C2,obfuscate,[ˈɒbfʌskeɪt],запутывать намеренно
+C2,panacea,[ˌpænəˈsiːə],панацея
+C2,quixotic,[kwɪkˈsɒtɪk],романтично-идеалистический
+C2,recalcitrant,[rɪˈkælsɪtrənt],упрямый, непокорный
+C2,surreptitious,[ˌsʌrəpˈtɪʃəs],тайный, скрытный
+C2,taciturn,[ˈtæsɪtɜːn],малословный
+C2,ubiquitous,[juːˈbɪkwɪtəs],вездесущий
+C2,vicissitude,[vɪˈsɪsɪtjuːd],перемена, неустойчивость
+C2,zeitgeist,[ˈzaɪtɡaɪst],дух времени

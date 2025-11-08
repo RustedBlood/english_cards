@@ -1,8 +1,18 @@
+use dashmap::DashMap;
 use serde::{Deserialize, Serialize};
 
+//Структура для парсинга и хранения информации о слове
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Word {
     pub grade: String,
-    pub english_word: String,
+    pub en_word: String,
     pub transcription: String,
-    pub russian_word: String,
+    pub ru_word: String,
+}
+
+//Структура для хранения слов вида
+// уровень английского - ключ
+// значение - вектор слов со структурой Word
+pub struct WordsDash {
+    pub words_dash: DashMap<String, Vec<Word>>,
 }
