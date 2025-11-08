@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Cards - Изучение слов</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .demo-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .level-info {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            width: 100%;
+        }
+
+        .level-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-container span {
+            color: white;
+            font-weight: bold;
+            min-width: 60px;
+        }
+
+        .card-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .card {
+            width: 400px;
+            height: 300px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-front {
+            background: white;
+            color: #333;
+        }
+
+        .card-back {
+            background: #4a5568;
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .word-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .word {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .transcription {
+            font-size: 1.2rem;
+            color: #667eea;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .translation-label {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .hint {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+
+        .completion-message {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .completion-content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .completion-content p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: #666;
+        }
+
+        .home-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            color: #e53e3e;
+        }
+
+        .error-message h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .error-message p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: #666;
+        }
+
+        .retry-btn {
+            background: linear-gradient(135deg, #e53e3e, #c53030);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .retry-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .card-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+                height: 250px;
+            }
+
+            .nav-btn {
+                width: 50px;
+                height: 50px;
+            }
+
+            .level-info h1 {
+                font-size: 2rem;
+            }
+
+            .word {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">English Cards</div>
+        <div class="demo-badge">DEMO</div>
+    </header>
+
+    <main class="main-container">
+        <div class="level-info">
+            <h1 id="current-level">Уровень A1</h1>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span id="progress-text">0/0</span>
+            </div>
+        </div>
+
+        <div class="loading hidden" id="loading">
+            <div class="spinner"></div>
+            <p>Загрузка слов...</p>
+        </div>
+
+        <div class="error-message hidden" id="error-message">
+            <h2>Ошибка загрузки</h2>
+            <p id="error-text">Не удалось загрузить слова для этого уровня</p>
+            <button class="retry-btn" id="retry-btn">Попробовать снова</button>
+        </div>
+
+        <div class="card-container" id="card-container">
+            <button class="nav-btn prev-btn" id="prev-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <div class="card" id="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="word-container">
+                            <h2 class="word" id="en-word">Загрузка...</h2>
+                            <p class="transcription" id="transcription">[transcription]</p>
+                        </div>
+                        <p class="hint">Нажмите на карточку, чтобы увидеть перевод</p>
+                    </div>
+                    <div class="card-back">
+                        <div class="word-container">
+                            <h2 class="word" id="ru-word">Перевод</h2>
+                            <p class="translation-label">Перевод</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="nav-btn next-btn" id="next-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="completion-message hidden" id="completion-message">
+            <div class="completion-content">
+                <h2>Поздравляем!</h2>
+                <p>Вы изучили все слова на этом уровне</p>
+                <button class="home-btn" id="home-btn">Вернуться на главную</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Получаем элементы DOM
+            const card = document.getElementById('card');
+            const enWordElement = document.getElementById('en-word');
+            const ruWordElement = document.getElementById('ru-word');
+            const transcriptionElement = document.getElementById('transcription');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const currentLevelElement = document.getElementById('current-level');
+            const progressFill = document.getElementById('progress-fill');
+            const progressText = document.getElementById('progress-text');
+            const completionMessage = document.getElementById('completion-message');
+            const homeBtn = document.getElementById('home-btn');
+            const loadingElement = document.getElementById('loading');
+            const errorMessage = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+            const retryBtn = document.getElementById('retry-btn');
+            const cardContainer = document.getElementById('card-container');
+
+            // Получаем уровень из URL
+            const pathSegments = window.location.pathname.split('/');
+            const grade = pathSegments[pathSegments.length - 1] || 'A1';
+
+            // Инициализация данных
+            let words = [];
+            let currentWordIndex = 0;
+
+            // Устанавливаем текущий уровень в заголовок
+            currentLevelElement.textContent = `Уровень ${grade}`;
+
+            // Загружаем слова для выбранного уровня
+            loadWords(grade);
+
+            // Функция загрузки слов с сервера
+            async function loadWords(grade) {
+                showLoading();
+                hideError();
+                hideCardContainer();
+                hideCompletionMessage();
+
+                try {
+                    const response = await fetch(`/api/grade/${grade}`);
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+
+                    if (data && data.words && Array.isArray(data.words) && data.words.length > 0) {
+                        words = data.words;
+                        currentWordIndex = 0;
+                        showCardContainer();
+                        showWord(currentWordIndex);
+                        updateProgress();
+                    } else {
+                        throw new Error('Нет данных о словах для этого уровня');
+                    }
+                } catch (error) {
+                    console.error('Ошибка загрузки слов:', error);
+                    showError(`Не удалось загрузить слова: ${error.message}`);
+                } finally {
+                    hideLoading();
+                }
+            }
+
+            // Функция отображения текущего слова
+            function showWord(index) {
+                const word = words[index];
+                enWordElement.textContent = word.en_word;
+                ruWordElement.textContent = word.ru_word;
+                transcriptionElement.textContent = word.transcription;
+
+                // Сбрасываем карточку на английскую сторону
+                card.classList.remove('flipped');
+
+                // Обновляем состояние кнопок навигации
+                prevBtn.disabled = index === 0;
+                nextBtn.disabled = index === words.length - 1;
+
+                // Обновляем прогресс
+                updateProgress();
+            }
+
+            // Функция обновления прогресса
+            function updateProgress() {
+                const progress = ((currentWordIndex + 1) / words.length) * 100;
+                progressFill.style.width = `${progress}%`;
+                progressText.textContent = `${currentWordIndex + 1}/${words.length}`;
+
+                // Проверяем, завершено ли изучение всех слов
+                if (currentWordIndex === words.length - 1) {
+                    completionMessage.classList.remove('hidden');
+                } else {
+                    completionMessage.classList.add('hidden');
+                }
+            }
+
+            // Функции для управления отображением состояний
+            function showLoading() {
+                loadingElement.classList.remove('hidden');
+            }
+
+            function hideLoading() {
+                loadingElement.classList.add('hidden');
+            }
+
+            function showError(message) {
+                errorText.textContent = message;
+                errorMessage.classList.remove('hidden');
+            }
+
+            function hideError() {
+                errorMessage.classList.add('hidden');
+            }
+
+            function showCardContainer() {
+                cardContainer.classList.remove('hidden');
+            }
+
+            function hideCardContainer() {
+                cardContainer.classList.add('hidden');
+            }
+
+            function hideCompletionMessage() {
+                completionMessage.classList.add('hidden');
+            }
+
+            // Обработчик клика по карточке (переворот)
+            card.addEventListener('click', function() {
+                card.classList.toggle('flipped');
+            });
+
+            // Обработчик кнопки "Предыдущее слово"
+            prevBtn.addEventListener('click', function() {
+                if (currentWordIndex > 0) {
+                    currentWordIndex--;
+                    showWord(currentWordIndex);
+                }
+            });
+
+            // Обработчик кнопки "Следующее слово"
+            nextBtn.addEventListener('click', function() {
+                if (currentWordIndex < words.length - 1) {
+                    currentWordIndex++;
+                    showWord(currentWordIndex);
+                }
+            });
+
+            // Обработчик кнопки возврата на главную
+            homeBtn.addEventListener('click', function() {
+                window.location.href = '/';
+            });
+
+            // Обработчик кнопки повторной попытки
+            retryBtn.addEventListener('click', function() {
+                loadWords(grade);
+            });
+
+            // Обработчики клавиатуры для навигации
+            document.addEventListener('keydown', function(event) {
+                // Игнорируем нажатия, если пользователь вводит текст
+                if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+                    return;
+                }
+
+                if (event.key === 'ArrowLeft' && currentWordIndex > 0) {
+                    currentWordIndex--;
+                    showWord(currentWordIndex);
+                } else if (event.key === 'ArrowRight' && currentWordIndex < words.length - 1) {
+                    currentWordIndex++;
+                    showWord(currentWordIndex);
+                } else if (event.key === ' ' || event.key === 'Enter') {
+                    card.classList.toggle('flipped');
+                    event.preventDefault(); // Предотвращаем прокрутку страницы при нажатии пробела
+                }
+            });
+
+            // Добавляем обработчик для сохранения прогресса в localStorage
+            window.addEventListener('beforeunload', function() {
+                if (words.length > 0) {
+                    const progressData = {
+                        grade: grade,
+                        currentIndex: currentWordIndex,
+                        timestamp: Date.now()
+                    };
+                    localStorage.setItem(`englishCardsProgress_${grade}`, JSON.stringify(progressData));
+                }
+            });
+
+            // Восстанавливаем прогресс из localStorage при загрузке
+            function restoreProgress() {
+                try {
+                    const savedProgress = localStorage.getItem(`englishCardsProgress_${grade}`);
+                    if (savedProgress) {
+                        const progressData = JSON.parse(savedProgress);
+                        // Проверяем, что сохраненный прогресс не старше 24 часов
+                        if (Date.now() - progressData.timestamp < 24 * 60 * 60 * 1000) {
+                            currentWordIndex = Math.min(progressData.currentIndex, words.length - 1);
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Не удалось восстановить прогресс:', e);
+                }
+            }
+
+            // Модифицируем функцию loadWords для восстановления прогресса
+            const originalLoadWords = loadWords;
+            loadWords = async function(grade) {
+                await originalLoadWords(grade);
+                if (words.length > 0) {
+                    restoreProgress();
+                    showWord(currentWordIndex);
+                }
+            };
+        });
+    </script>
+</body>
+</html>

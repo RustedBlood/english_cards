@@ -21,7 +21,8 @@ async fn main() -> std::io::Result<()> {
             .app_data(tera_data.clone()) // клонирование Arc
             .app_data(loaded_words_data.clone()) //arc указатель
             .route("/", web::get().to(handlers::index)) //первичная страница
-            .route("/{group_id}", web::get().to(handlers::grade)) // Загрузка карточек
+            .route("/{group_id}", web::get().to(handlers::grade)) // Загрузка .html
+            .route("/api/grade/{grade}", web::get().to(handlers::get_words))
             .service(Files::new("/static", "./static")) // Сервис статик файлов
     })
     .bind("127.0.0.1:8080")?
